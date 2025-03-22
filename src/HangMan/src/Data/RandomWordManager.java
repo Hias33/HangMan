@@ -3,18 +3,12 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import javax.net.ssl.*;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.security.KeyStore;
-import java.security.SecureRandom;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateFactory;
+import java.util.*;
 
 public class RandomWordManager {
     static String apiUrl = "https://random-word-api.herokuapp.com/all?lang=zh";
 
-        public static String getRandomWord() {
+        public static List<String> getRandomWord() {
             try {
                 // Die URL der API
                 String apiUrl = "https://random-word-api.herokuapp.com/word?number=42";
@@ -33,23 +27,33 @@ public class RandomWordManager {
                 if (responseCode == HttpURLConnection.HTTP_OK) {
                     // Lese die Antwort der API
                     BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                    String inputLine;
-                    StringBuilder response = new StringBuilder();
 
-                    while ((inputLine = in.readLine()) != null) {
-                        response.append(inputLine);
+                    String inputLine;
+                    inputLine = in.readLine();
+
+                    String rawResponse = inputLine.toString().trim();
+                    rawResponse = rawResponse.substring(1,rawResponse.length() - 1);
+
+                    String[] wordsArray = rawResponse.split(",");
+
+                    List<String> response = new ArrayList<>();
+
+                    for (String word : wordsArray){
+                        response.add(word.replace("\"","").trim());
                     }
+
                     in.close();
 
                     // Gib die Antwort aus
-                    System.out.println("API Antwort: " + response.toString());
+                    return response.stream().toList();
+
                 } else {
                     System.out.println("Fehler: " + responseCode);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            return "";
+            return null;
         }
 
 }
