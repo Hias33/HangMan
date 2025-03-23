@@ -11,18 +11,30 @@ import javax.swing.text.*;
 
 public class PlayScreen {
     public static void SetUpPlayScreen() {
+        GridBagConstraints gbc = new GridBagConstraints();
+
         playScreen.setSize(400,400);
-        JLabel title = new JLabel("Play Screen");
-        playScreenPanel.add(title);
+        playScreen.setLayout(new GridBagLayout());
 
-        playScreenPanel.add(playField);
+        playScreenPanel.setLayout(new GridBagLayout());
 
+        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.gridx = 0;
+
+        gbc.gridy = 0;
+        playField.setFont(new Font("Arial", Font.BOLD, 24));
+        playScreenPanel.add(playField, gbc);
+
+        gbc.gridy = 1;
+        gbc.insets = new Insets(40,10,10,10);
         input.setPreferredSize(new Dimension(50, 20));
         input.setDocument(inputSetting);
-        playScreenPanel.add(input);
+        playScreenPanel.add(input, gbc);
 
+        gbc.gridy = 2;
+        gbc.insets = new Insets(10,10,10,10);
         confirm.addActionListener(onUserInput);
-        playScreenPanel.add(confirm);
+        playScreenPanel.add(confirm, gbc);
 
         playScreen.add(playScreenPanel);
     }
@@ -76,7 +88,8 @@ public class PlayScreen {
                 input.setText("");
 
                 if(!new String(disguisedWord).contains(".")){
-                    playScreenPanel.add(winnerLabel);
+                    DeactivatePlayScreen();
+                    WinnerScreen.ActivateWinnerScreen();
                 }
             }
         }

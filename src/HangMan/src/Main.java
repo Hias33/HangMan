@@ -1,6 +1,7 @@
 import Components.ChooseDifficultySite;
 import Components.CustomDifficulty;
 import Components.PlayScreen;
+import Components.WinnerScreen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,5 +17,6 @@ public class Main {
         ChooseDifficultySite.SetUpDifficultySite();
         PlayScreen.SetUpPlayScreen();
         CustomDifficulty.SetUpCustomDifficulty();
+        WinnerScreen.SetUpWinnerScreen();
     }
 }

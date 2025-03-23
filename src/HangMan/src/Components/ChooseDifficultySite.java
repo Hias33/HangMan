@@ -10,8 +10,6 @@ public class ChooseDifficultySite {
     static JFrame difficultySite = new JFrame("Difficulty Site");
     static JPanel panel = new JPanel();
 
-    static GridBagConstraints gbc = new GridBagConstraints();
-
     static AbstractAction easyAction = new AbstractAction() {
         @Override
         public void actionPerformed(ActionEvent e) {
