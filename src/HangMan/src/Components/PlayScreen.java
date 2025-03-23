@@ -57,6 +57,7 @@ public class PlayScreen {
     private static JTextArea input = new JTextArea();
     private static JButton confirm = new JButton("Confirm");
     private static String word;
+    private static JLabel winnerLabel = new JLabel("YOU WON!!!");
 
     private static AbstractAction onUserInput = new AbstractAction() {
         @Override
@@ -73,6 +74,10 @@ public class PlayScreen {
                     playField.setText(new String(disguisedWord));
                 }
                 input.setText("");
+
+                if(!new String(disguisedWord).contains(".")){
+                    playScreenPanel.add(winnerLabel);
+                }
             }
         }
     };
