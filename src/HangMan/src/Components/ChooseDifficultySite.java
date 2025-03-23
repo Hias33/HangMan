@@ -27,7 +27,7 @@ public class ChooseDifficultySite {
     };
 
     public static void SetUpDifficultySite(){
-        difficultySite.setSize(400, 400);
+        difficultySite.setSize(600, 400);
 
         panel.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();

@@ -16,7 +16,7 @@ public class CustomDifficulty {
     };
 
     public static void SetUpCustomDifficulty() {
-        customDifficultyFrame.setSize(400,400);
+        customDifficultyFrame.setSize(600,400);
 
         JLabel difficultyLabel = new JLabel("Custom Difficulty");
         customDifficultyPanel.add(difficultyLabel);

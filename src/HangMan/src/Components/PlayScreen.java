@@ -13,34 +13,38 @@ public class PlayScreen {
     public static void SetUpPlayScreen() {
         GridBagConstraints gbc = new GridBagConstraints();
 
-        playScreen.setSize(400,400);
+        playScreen.setSize(600,400);
+        playScreen.getContentPane().setBackground(new Color(78, 67, 214));
+        playScreenPanel.setBackground(new Color(78, 67, 214));
         playScreen.setLayout(new GridBagLayout());
 
         playScreenPanel.setLayout(new GridBagLayout());
 
         gbc.insets = new Insets(10, 10, 10, 10);
-        gbc.gridx = 0;
+        gbc.gridx = 4;
 
         gbc.gridy = 0;
-        playField.setFont(new Font("Arial", Font.BOLD, 24));
+        playField.setFont(new Font("Arial", Font.BOLD, 35));
         playScreenPanel.add(playField, gbc);
 
         gbc.gridy = 1;
         gbc.insets = new Insets(40,10,10,10);
         input.setPreferredSize(new Dimension(50, 20));
         input.setDocument(inputSetting);
-        playScreenPanel.add(input, gbc);
+        playScreenPanel.add(Keyboard.keyboard, gbc);
+        //playScreenPanel.add(input, gbc);
 
         gbc.gridy = 2;
         gbc.insets = new Insets(10,10,10,10);
         confirm.addActionListener(onUserInput);
-        playScreenPanel.add(confirm, gbc);
+        //playScreenPanel.add(confirm, gbc);
 
         playScreen.add(playScreenPanel);
     }
 
     public static void ActivatePlayScreen() {
         SetUpWord();
+        Keyboard.SetUpKeyboard();
         playScreen.setVisible(true);
     }
 
@@ -55,10 +59,10 @@ public class PlayScreen {
         disguisedWord = new char[wordString.length()];
         for (int i = 0; i < wordString.length(); i++)
         {
-            disguisedWord[i]='.';
+            disguisedWord[i]='_';
         }
 
-        playField.setText(new String(disguisedWord));
+        playField.setText(new String(disguisedWord).replaceAll(".(?!$)", "$0 "));
     }
 
     private static JFrame playScreen = new JFrame("Play Screen");
@@ -70,6 +74,7 @@ public class PlayScreen {
     private static JButton confirm = new JButton("Confirm");
     private static String word;
     private static JLabel winnerLabel = new JLabel("YOU WON!!!");
+    private static ImageIcon hangManImage = new ImageIcon();
 
     private static AbstractAction onUserInput = new AbstractAction() {
         @Override
@@ -83,11 +88,11 @@ public class PlayScreen {
                             disguisedWord[i] = userInput.charAt(0);
                         }
                     }
-                    playField.setText(new String(disguisedWord));
+                    playField.setText(new String(disguisedWord).replaceAll(".(?!$)", "$0 "));
                 }
                 input.setText("");
 
-                if(!new String(disguisedWord).contains(".")){
+                if(!new String(disguisedWord).contains("_")){
                     DeactivatePlayScreen();
                     WinnerScreen.ActivateWinnerScreen();
                 }
