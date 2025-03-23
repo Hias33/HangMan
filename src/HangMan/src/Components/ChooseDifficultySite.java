@@ -29,9 +29,13 @@ public class ChooseDifficultySite {
     };
 
     public static void SetUpDifficultySite(){
-        difficultySite.setSize(400,400);
-        gbc.gridx = 0;
+        difficultySite.setSize(400, 400);
+
+        panel.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+
         gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.gridx = 0;
 
         JLabel text = new JLabel("Welcome! Choose your difficulty!", SwingConstants.CENTER);
         text.setFont(new Font("Arial", Font.BOLD, 16));
@@ -61,6 +65,7 @@ public class ChooseDifficultySite {
         panel.add(custom, gbc);
 
         difficultySite.add(panel);
+
     }
 
     public static void ActivateDifficultySite(){
