@@ -44,12 +44,31 @@ public class PlayScreen {
 
     public static void ActivatePlayScreen() {
         SetUpWord();
-        Keyboard.SetUpKeyboard();
         playScreen.setVisible(true);
     }
 
     public static void DeactivatePlayScreen() {
         playScreen.setVisible(false);
+    }
+
+    public static void OnUserInput(String pInput){
+        if(!pInput.equals(null) && !pInput.equals(""))
+        {
+            if (word.contains(pInput.toLowerCase())) {
+                for (int i = 0; i < word.length(); i++) {
+                    if (word.charAt(i) == pInput.toLowerCase().charAt(0)) {
+                        disguisedWord[i] = pInput.charAt(0);
+                    }
+                }
+                playField.setText(new String(disguisedWord).replaceAll(".(?!$)", "$0 "));
+            }
+            input.setText("");
+
+            if(!new String(disguisedWord).contains("_")){
+                //DeactivatePlayScreen();
+                //WinnerScreen.ActivateWinnerScreen();
+            }
+        }
     }
 
     private static void SetUpWord(){

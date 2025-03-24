@@ -1,7 +1,4 @@
-import Components.ChooseDifficultySite;
-import Components.CustomDifficulty;
-import Components.PlayScreen;
-import Components.WinnerScreen;
+import Components.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,5 +15,6 @@ public class Main {
         PlayScreen.SetUpPlayScreen();
         CustomDifficulty.SetUpCustomDifficulty();
         WinnerScreen.SetUpWinnerScreen();
+        Keyboard.SetUpKeyboard();
     }
 }

@@ -3,6 +3,7 @@ package Components;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class Keyboard {
     private static String letters = "ABCDEFGHIJKLMNOPQRSTUVXYZ";
@@ -34,8 +35,14 @@ public class Keyboard {
             JButton button = new JButton(String.valueOf(letter));
 
             button.setPreferredSize(new Dimension(35, 35));
-            //button.setMinimumSize(new Dimension(50, 50));
-            //button.setMaximumSize(new Dimension(50, 50));
+
+            button.addActionListener(new AbstractAction() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    PlayScreen.OnUserInput(String.valueOf(letter));
+                    button.setEnabled(false);
+                }
+            });
 
             button.setBackground(new Color(155, 12, 190));
             button.setForeground(Color.WHITE);
