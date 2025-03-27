@@ -11,7 +11,7 @@ public class RandomWordManager {
         public static List<String> getRandomWord() {
             try {
                 // Die URL der API
-                String apiUrl = "https://random-word-api.herokuapp.com/word?number=42";
+                String apiUrl = "https://random-word-api.herokuapp.com/word?lang=de";
 
                 // Erstelle ein URL-Objekt
                 URL url = new URL(apiUrl);

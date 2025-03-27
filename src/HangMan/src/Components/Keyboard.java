@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class Keyboard {
-    private static String letters = "ABCDEFGHIJKLMNOPQRSTUVXYZ";
+    private static String letters = "ABCDEFGHIJKLMNOPQRSTUWVXYZ";
 
     public static JPanel keyboard = new JPanel();
 
@@ -21,14 +21,9 @@ public class Keyboard {
         Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
 
         for(char letter : letters.toCharArray()){
-            if (letter == 'J') {
+            if (letter == 'J'||letter =='S') {
                 gbc.gridy++;
                 xPos = 0;
-            }
-            if(letter =='S'){
-                gbc.gridy++;
-                xPos=0;
-                xPos++;
             }
 
             gbc.gridx = xPos++;
@@ -41,16 +36,29 @@ public class Keyboard {
                 public void actionPerformed(ActionEvent e) {
                     PlayScreen.OnUserInput(String.valueOf(letter));
                     button.setEnabled(false);
+                    button.setBackground(new Color(95, 29, 111));
                 }
             });
 
             button.setBackground(new Color(155, 12, 190));
             button.setForeground(Color.WHITE);
             button.setFocusPainted(false);
-
-            button.setBorder(border); // Schwarzer Rand mit einer Dicke von 1 Pixel
+            button.setBorderPainted(false);
+            button.setBorder(border);
 
             keyboard.add(button,gbc);
         }
+        gbc.gridx++;
+        gbc.anchor = GridBagConstraints.EAST;
+        JButton getBack = new JButton();
+        getBack.setText("Back!");
+        getBack.setPreferredSize(new Dimension(40, 35));
+        getBack.setBackground(Color.RED);
+        getBack.setForeground(Color.WHITE);
+        getBack.setFocusPainted(false);
+
+        getBack.setBorder(border);
+        keyboard.add(getBack,gbc);
+
     }
 }
