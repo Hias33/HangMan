@@ -1,5 +1,6 @@
 package Data;
 import Models.Difficulty;
+import Models.Language;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -41,6 +42,17 @@ public class RandomWordManager {
             }
             return null;
         }
+
+        public static List<String> GetCustomDifficultyWord(List<Language> pLanguages, int pWordLength){
+            List<String> wordList = new ArrayList<>();
+            for(Language language : pLanguages){
+                apiUrl = "https://random-word-api.herokuapp.com/word?lang="+language.language+"&number="+language.probability+"&length="+pWordLength;
+                for(String word : SendRequest(apiUrl)){
+                    wordList.add(word);
+                }
+            }
+            return wordList;
+        };
 
         private static List<String> SendRequest(String pApiUrl){
             try {
