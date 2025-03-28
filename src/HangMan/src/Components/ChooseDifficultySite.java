@@ -1,5 +1,6 @@
 package Components;
 import Data.RandomWordManager;
+import Models.Difficulty;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +14,23 @@ public class ChooseDifficultySite {
     static AbstractAction easyAction = new AbstractAction() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            PlayScreen.ActivatePlayScreen();
+            PlayScreen.ActivatePlayScreen(Difficulty.Easy);
+            difficultySite.setVisible(false);
+        }
+    };
+
+    static AbstractAction mediumAction = new AbstractAction() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            PlayScreen.ActivatePlayScreen(Difficulty.Medium);
+            difficultySite.setVisible(false);
+        }
+    };
+
+    static AbstractAction hardAction = new AbstractAction() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            PlayScreen.ActivatePlayScreen(Difficulty.Hard);
             difficultySite.setVisible(false);
         }
     };
@@ -28,8 +45,10 @@ public class ChooseDifficultySite {
 
     public static void SetUpDifficultySite(){
         difficultySite.setSize(600, 400);
+        difficultySite.setBackground(new Color(78, 67, 214));
 
         panel.setLayout(new GridBagLayout());
+        panel.setBackground(new Color(78, 67, 214));
         GridBagConstraints gbc = new GridBagConstraints();
 
         gbc.insets = new Insets(10, 10, 10, 10);
@@ -44,22 +63,28 @@ public class ChooseDifficultySite {
         easy.setBackground(Color.GREEN);
         gbc.gridy = 1;
         easy.addActionListener(easyAction);
+        easy.setFocusPainted(false);
         panel.add(easy, gbc);
 
         JButton medium = new JButton("Medium");
         medium.setBackground(Color.ORANGE);
         gbc.gridy = 2;
+        medium.addActionListener(mediumAction);
+        medium.setFocusPainted(false);
         panel.add(medium, gbc);
 
         JButton hard = new JButton("Hard");
         hard.setBackground(Color.RED);
         gbc.gridy = 3;
+        hard.addActionListener(hardAction);
+        hard.setFocusPainted(false);
         panel.add(hard, gbc);
 
         JButton custom = new JButton("Custom");
         custom.setBackground(Color.MAGENTA);
         custom.addActionListener(customDifficultyAction);
         gbc.gridy = 4;
+        custom.setFocusPainted(false);
         panel.add(custom, gbc);
 
         difficultySite.add(panel);
