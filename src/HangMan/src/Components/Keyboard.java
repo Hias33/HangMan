@@ -56,9 +56,17 @@ public class Keyboard {
         getBack.setBackground(Color.RED);
         getBack.setForeground(Color.WHITE);
         getBack.setFocusPainted(false);
-
+        getBack.addActionListener(backAction);
         getBack.setBorder(border);
         keyboard.add(getBack,gbc);
 
     }
+    
+    static AbstractAction backAction = new AbstractAction() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            PlayScreen.DeactivatePlayScreen();
+            ChooseDifficultySite.ActivateDifficultySite();
+        }
+    };
 }

@@ -1,5 +1,7 @@
 package Components;
 import Data.RandomWordManager;
+import Models.Difficulty;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -45,7 +47,7 @@ public class PlayScreen {
         playScreen.add(playScreenPanel);
     }
 
-    public static void ActivatePlayScreen() {
+    public static void ActivatePlayScreen(Difficulty pDifficulty) {
         SetUpWord();
         playScreen.setVisible(true);
     }
@@ -72,7 +74,11 @@ public class PlayScreen {
     }
 
     private static void SetUpWord(){
-        wordList = RandomWordManager.getRandomWord();
+        //wordList = RandomWordManager.getRandomWord();
+        wordList = List.of(
+                "Baum", "Wolke", "Straße", "Fahrrad", "Apfel",
+                "Hund", "Buch", "Fenster", "Tisch", "Lampe"
+        );
         String wordString = wordList.get(0);
         word = wordString;
         disguisedWord = new char[wordString.length()];
