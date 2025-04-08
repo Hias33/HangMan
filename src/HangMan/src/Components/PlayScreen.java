@@ -48,7 +48,7 @@ public class PlayScreen {
     }
 
     public static void ActivatePlayScreen(Difficulty pDifficulty) {
-        SetUpWord();
+        SetUpWord(pDifficulty);
         playScreen.setVisible(true);
     }
 
@@ -73,8 +73,8 @@ public class PlayScreen {
         }
     }
 
-    private static void SetUpWord(){
-        //wordList = RandomWordManager.getRandomWord();
+    private static void SetUpWord(Difficulty pDifficulty){
+        //wordList = RandomWordManager.getRandomWord(pDifficulty);
         wordList = List.of(
                 "Baum", "Wolke", "Straße", "Fahrrad", "Apfel",
                 "Hund", "Buch", "Fenster", "Tisch", "Lampe"
