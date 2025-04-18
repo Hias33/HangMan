@@ -1,0 +1,51 @@
+# IntelliJ IDEA files
+.idea/
+*.iml
+*.iws
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Build directories
+/out/
+/build/
+
+# Maven files
+target/
+
+# Gradle files
+.gradle/
+/build/
+
+# JAR files
+*.jar
+
+# Generated files by Java
+*.war
+*.ear
+
+# Dependency caches
+*.pom
+*.lock
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Eclipse project files (falls es gemischt wird)
+.project
+.classpath
+
+# Other IDE-specific files
+.vscode/
+
+# Ignoring sensitive settings or credentials
+.env
+*.key
