@@ -3,44 +3,36 @@ import Models.Difficulty;
 import Models.Language;
 
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.http.HttpClient;
 import java.util.*;
+import javax.net.ssl.*;
+import java.security.KeyStore;
+import java.io.InputStream;
 
 public class RandomWordManager {
-    static String apiUrl = "https://random-word-api.herokuapp.com/all?lang=zh";
 
         public static List<String> getRandomWord(Difficulty pDifficulty) {
             List<String> wordList = new ArrayList<>();
-
             switch(pDifficulty){
-                case Difficulty.Easy -> {
-                    apiUrl = "https://random-word-api.herokuapp.com/word?lang=de&number=100&length=5";
+                case Easy -> {
+                    apiUrl = "https://loudly-organic-osprey.ngrok-free.app/Word?lang=de&number=100&min=3&max=5";
                     wordList = SendRequest(apiUrl);
                 }
-                case Difficulty.Medium -> {
-                    apiUrl = "https://random-word-api.herokuapp.com/word?lang=de&number=50&length=8";
+                case Medium -> {
+                    apiUrl = "https://loudly-organic-osprey.ngrok-free.app/Word?lang=en&number=100&min=6&max=9";
                     wordList = SendRequest(apiUrl);
-                    apiUrl = "https://random-word-api.herokuapp.com/word?lang=en&number=50&length=8";
-                    for(String word : SendRequest(apiUrl)){
-                        wordList.add(word);
-                    }
                 }
-                case Difficulty.Hard -> {
-                    apiUrl = "https://random-word-api.herokuapp.com/word?lang=de&number=33&length=8";
+                case Hard -> {
+                    apiUrl = "https://loudly-organic-osprey.ngrok-free.app/Word?lang=it&number=100&min=7&max=10";
                     wordList = SendRequest(apiUrl);
-                    apiUrl = "https://random-word-api.herokuapp.com/word?lang=en&number=33&length=8";
-                    for(String word : SendRequest(apiUrl)){
-                        wordList.add(word);
-                    }
-                    apiUrl = "https://random-word-api.herokuapp.com/word?lang=it&number=34&length=8";
-                    for(String word : SendRequest(apiUrl)){
-                        wordList.add(word);
-                    }
                 }
             }
-            return null;
+
+            return wordList;
         }
 
         public static List<String> GetCustomDifficultyWord(List<Language> pLanguages, int pWordLength){
@@ -74,12 +66,22 @@ public class RandomWordManager {
                     String rawResponse = inputLine.toString().trim();
                     rawResponse = rawResponse.substring(1,rawResponse.length() - 1);
 
-                    String[] wordsArray = rawResponse.split(",");
 
+//                    String[] wordsArray = rawResponse.split(",");
+
+                    String cleanedInput = rawResponse.replace("\"words\":[", "")  // Entfernt den Präfix
+                            .replace("[", "")            // Entfernt die eckige Klammer links
+                            .replace("]", "")            // Entfernt die eckige Klammer rechts
+                            .replace("\"", "");          // Entfernt die Anführungszeichen
+
+
+                    String[] wordsArray = cleanedInput.split(",");
                     List<String> response = new ArrayList<>();
 
                     for (String word : wordsArray){
-                        response.add(word.replace("\"","").trim());
+                        if(!(word).toLowerCase().contains("ä")&&!(word).toLowerCase().contains("ö")&&!(word).toLowerCase().contains("ü")) {
+                            response.add(word.replace("\"", "").trim());
+                        }
                     }
                     in.close();
 
@@ -94,5 +96,6 @@ public class RandomWordManager {
             return null;
         }
 
+    private static String apiUrl = "";
 }
 

@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import java.util.Random;
 import javax.swing.text.*;
 
 
@@ -24,8 +25,8 @@ public class PlayScreen {
 
         gbc.gridx = 0;
         gbc.insets = new Insets(10, 10, 10, 0);
-        ImageIcon deadMan = new ImageIcon("C:\\Users\\Matthe2209\\IdeaProjects\\pictures\\Design ohne Titel.png");
-        JLabel deadManLabel = new JLabel(deadMan);
+        deadMan = new ImageIcon(imagePath);
+        deadManLabel = new JLabel(deadMan);
         manPanel.add(deadManLabel);
         manPanel.setOpaque(false);
         playScreen.add(manPanel, gbc);
@@ -67,18 +68,25 @@ public class PlayScreen {
                 }
                 playField.setText(new String(disguisedWord).replaceAll(".(?!$)", "$0 "));
             }
+            else{
+                wrongGuesses++;
+                imagePath = "C:\\Users\\Matthe2209\\IdeaProjects\\HangMan\\src\\HangMan\\resources\\images\\image_" + wrongGuesses + ".png";
+                ImageIcon updatedImage = new ImageIcon(imagePath);
+                deadManLabel.setIcon(updatedImage);
+                deadManLabel.revalidate();
+                deadManLabel.repaint();
+                manPanel.revalidate();
+                manPanel.repaint();
+            }
             if(!new String(disguisedWord).contains("_")){
 
             }
+
         }
     }
 
     private static void SetUpWord(Difficulty pDifficulty){
-        //wordList = RandomWordManager.getRandomWord(pDifficulty);
-        wordList = List.of(
-                "Baum", "Wolke", "Straße", "Fahrrad", "Apfel",
-                "Hund", "Buch", "Fenster", "Tisch", "Lampe"
-        );
+        wordList = RandomWordManager.getRandomWord(pDifficulty);
         String wordString = wordList.get(0);
         word = wordString;
         disguisedWord = new char[wordString.length()];
@@ -90,6 +98,7 @@ public class PlayScreen {
         playField.setText(new String(disguisedWord).replaceAll(".(?!$)", "$0 "));
     }
 
+    private static int wrongGuesses=1;
     private static JPanel manPanel = new JPanel();
     private static JFrame playScreen = new JFrame("Play Screen");
     private static JPanel playScreenPanel = new JPanel();
@@ -97,8 +106,9 @@ public class PlayScreen {
     private static JLabel playField = new JLabel();
     private static char[] disguisedWord = new char[]{};
     private static String word;
-
-
+    private static String imagePath = "C:\\Users\\Matthe2209\\IdeaProjects\\HangMan\\src\\HangMan\\resources\\images\\image_" + wrongGuesses + ".png";
+    private static ImageIcon deadMan;
+    private static JLabel deadManLabel;
 
     private static PlainDocument inputSetting = new PlainDocument() {
         @Override
