@@ -35,14 +35,6 @@ public class ChooseDifficultySite {
         }
     };
 
-    static AbstractAction customDifficultyAction = new AbstractAction() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            CustomDifficulty.ActivateCustomDifficulty();
-            DeactivateDifficultySite();
-        }
-    };
-
     public static void SetUpDifficultySite(){
         difficultySite.setSize(600, 400);
         difficultySite.setBackground(new Color(78, 67, 214));
@@ -79,13 +71,6 @@ public class ChooseDifficultySite {
         hard.addActionListener(hardAction);
         hard.setFocusPainted(false);
         panel.add(hard, gbc);
-
-        JButton custom = new JButton("Custom");
-        custom.setBackground(Color.MAGENTA);
-        custom.addActionListener(customDifficultyAction);
-        gbc.gridy = 4;
-        custom.setFocusPainted(false);
-        panel.add(custom, gbc);
 
         difficultySite.add(panel);
 

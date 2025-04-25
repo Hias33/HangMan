@@ -1,9 +1,5 @@
 import Components.*;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-
 public class Main {
     public static void main(String[] args) {
         SetUpSites();
@@ -13,7 +9,6 @@ public class Main {
     private static void SetUpSites(){
         ChooseDifficultySite.SetUpDifficultySite();
         PlayScreen.SetUpPlayScreen();
-        CustomDifficulty.SetUpCustomDifficulty();
         WinnerScreen.SetUpWinnerScreen();
         Keyboard.SetUpKeyboard();
         Scoreboard.SetUpScoreBoard();

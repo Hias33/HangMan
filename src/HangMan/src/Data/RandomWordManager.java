@@ -1,17 +1,14 @@
 package Data;
+//intern:
 import Models.Difficulty;
 import Models.Language;
 
+//extern:
 import java.io.BufferedReader;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.http.HttpClient;
 import java.util.*;
-import javax.net.ssl.*;
-import java.security.KeyStore;
-import java.io.InputStream;
 
 public class RandomWordManager {
 
