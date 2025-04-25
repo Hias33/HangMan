@@ -1,6 +1,6 @@
 package Components;
+//extern:
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class CustomDifficulty {

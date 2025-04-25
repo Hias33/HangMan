@@ -16,5 +16,6 @@ public class Main {
         CustomDifficulty.SetUpCustomDifficulty();
         WinnerScreen.SetUpWinnerScreen();
         Keyboard.SetUpKeyboard();
+        Scoreboard.SetUpScoreBoard();
     }
 }

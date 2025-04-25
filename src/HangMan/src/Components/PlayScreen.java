@@ -1,14 +1,13 @@
 package Components;
+//intern:
 import Data.RandomWordManager;
 import Models.Difficulty;
 
+//extern:
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.event.ActionEvent;
-import java.util.Random;
 import javax.swing.text.*;
 
 
@@ -45,6 +44,8 @@ public class PlayScreen {
         gbc.gridy = 2;
         gbc.insets = new Insets(10,10,10,10);
 
+        playScreenPanel.add(Scoreboard.scoreBoardPanel, gbc);
+
         playScreen.add(playScreenPanel);
     }
 
@@ -55,6 +56,14 @@ public class PlayScreen {
 
     public static void DeactivatePlayScreen() {
         playScreen.setVisible(false);
+        wrongGuesses = 1;
+        imagePath = "C:\\Users\\Matthe2209\\IdeaProjects\\HangMan\\src\\HangMan\\resources\\images\\image_" + wrongGuesses + ".png";
+        ImageIcon updatedImage = new ImageIcon(imagePath);
+        deadManLabel.setIcon(updatedImage);
+        deadManLabel.revalidate();
+        deadManLabel.repaint();
+        manPanel.revalidate();
+        manPanel.repaint();
     }
 
     public static void OnUserInput(String pInput){
@@ -66,22 +75,29 @@ public class PlayScreen {
                         disguisedWord[i] = pInput.charAt(0);
                     }
                 }
+                score++;
+                Scoreboard.updateScore(score);
                 playField.setText(new String(disguisedWord).replaceAll(".(?!$)", "$0 "));
             }
             else{
-                wrongGuesses++;
-                imagePath = "C:\\Users\\Matthe2209\\IdeaProjects\\HangMan\\src\\HangMan\\resources\\images\\image_" + wrongGuesses + ".png";
-                ImageIcon updatedImage = new ImageIcon(imagePath);
-                deadManLabel.setIcon(updatedImage);
-                deadManLabel.revalidate();
-                deadManLabel.repaint();
-                manPanel.revalidate();
-                manPanel.repaint();
+                if(score==0){
+                    wrongGuesses++;
+                    imagePath = "C:\\Users\\Matthe2209\\IdeaProjects\\HangMan\\src\\HangMan\\resources\\images\\image_" + wrongGuesses + ".png";
+                    ImageIcon updatedImage = new ImageIcon(imagePath);
+                    deadManLabel.setIcon(updatedImage);
+                    deadManLabel.revalidate();
+                    deadManLabel.repaint();
+                    manPanel.revalidate();
+                    manPanel.repaint();
+                }
+                else{
+                    score--;
+                    Scoreboard.updateScore(score);
+                }
             }
             if(!new String(disguisedWord).contains("_")){
 
             }
-
         }
     }
 
@@ -109,6 +125,7 @@ public class PlayScreen {
     private static String imagePath = "C:\\Users\\Matthe2209\\IdeaProjects\\HangMan\\src\\HangMan\\resources\\images\\image_" + wrongGuesses + ".png";
     private static ImageIcon deadMan;
     private static JLabel deadManLabel;
+    private static int score = 0;
 
     private static PlainDocument inputSetting = new PlainDocument() {
         @Override

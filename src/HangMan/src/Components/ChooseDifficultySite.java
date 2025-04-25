@@ -1,11 +1,11 @@
 package Components;
-import Data.RandomWordManager;
+//intern:
 import Models.Difficulty;
 
+//extern:
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.Random;
 
 public class ChooseDifficultySite {
     static JFrame difficultySite = new JFrame("Difficulty Site");

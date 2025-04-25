@@ -1,5 +1,5 @@
 package Components;
-
+//extern:
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
@@ -67,6 +67,16 @@ public class Keyboard {
         public void actionPerformed(ActionEvent e) {
             PlayScreen.DeactivatePlayScreen();
             ChooseDifficultySite.ActivateDifficultySite();
+
+            for (Component component : keyboard.getComponents()) {
+                if (component instanceof JButton) {
+                    JButton button = (JButton) component;
+                    if (!button.getText().equals("Back!")) { // Überspringe den "Back!"-Button
+                        button.setEnabled(true); // Aktiviert den Button
+                        button.setBackground(new Color(155, 12, 190)); // Setzt die ursprüngliche Farbe zurück
+                    }
+                }
+            }
         }
     };
 }
