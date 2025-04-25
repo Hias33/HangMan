@@ -10,7 +10,7 @@ public class Scoreboard extends JPanel {
 
     public static void SetUpScoreBoard(){
         scoreBoardPanel.setLayout(new BoxLayout(scoreBoardPanel, BoxLayout.Y_AXIS));
-        scoreBoardPanel.setBackground(new Color(78, 67, 214)); // Hintergrundfarbe passend zum Spiel
+        scoreBoardPanel.setBackground(new Color(78, 67, 214));
 
         titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
         titleLabel.setForeground(Color.BLACK);
@@ -21,10 +21,9 @@ public class Scoreboard extends JPanel {
         scoreLabel.setForeground(Color.BLACK);
         scoreLabel.setAlignmentX(CENTER_ALIGNMENT);
 
-        scoreBoardPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Abstand
+        scoreBoardPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         scoreBoardPanel.add(titleLabel);
         scoreBoardPanel.add(scoreLabel);
-
     }
 
     public static void updateScore(int score) {

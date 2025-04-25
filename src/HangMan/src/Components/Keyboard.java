@@ -61,22 +61,25 @@ public class Keyboard {
         keyboard.add(getBack,gbc);
 
     }
+
+    public static void ResetKeyboard(){
+        for (Component component : keyboard.getComponents()) {
+            if (component instanceof JButton) {
+                JButton button = (JButton) component;
+                if (!button.getText().equals("Back!")) { // Überspringe den "Back!"-Button
+                    button.setEnabled(true); // Aktiviert den Button
+                    button.setBackground(new Color(155, 12, 190)); // Setzt die ursprüngliche Farbe zurück
+                }
+            }
+        }
+    }
     
     static AbstractAction backAction = new AbstractAction() {
         @Override
         public void actionPerformed(ActionEvent e) {
             PlayScreen.DeactivatePlayScreen();
+            PlayScreen.ResetPlayScreen();
             ChooseDifficultySite.ActivateDifficultySite();
-
-            for (Component component : keyboard.getComponents()) {
-                if (component instanceof JButton) {
-                    JButton button = (JButton) component;
-                    if (!button.getText().equals("Back!")) { // Überspringe den "Back!"-Button
-                        button.setEnabled(true); // Aktiviert den Button
-                        button.setBackground(new Color(155, 12, 190)); // Setzt die ursprüngliche Farbe zurück
-                    }
-                }
-            }
         }
     };
 }

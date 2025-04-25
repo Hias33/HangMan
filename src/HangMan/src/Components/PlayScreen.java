@@ -12,6 +12,7 @@ import javax.swing.text.*;
 
 
 public class PlayScreen {
+
     public static void SetUpPlayScreen() {
         GridBagConstraints gbc = new GridBagConstraints();
 
@@ -70,12 +71,14 @@ public class PlayScreen {
         if(!pInput.equals(null) && !pInput.equals(""))
         {
             if (word.toLowerCase().contains(pInput.toLowerCase())) {
+                int correctLetters = 0;
                 for (int i = 0; i < word.length(); i++) {
                     if (word.toLowerCase().charAt(i) == pInput.toLowerCase().charAt(0)) {
                         disguisedWord[i] = pInput.charAt(0);
+                        correctLetters++;
                     }
                 }
-                score++;
+                score+=correctLetters;
                 Scoreboard.updateScore(score);
                 playField.setText(new String(disguisedWord).replaceAll(".(?!$)", "$0 "));
             }
@@ -99,6 +102,12 @@ public class PlayScreen {
 
             }
         }
+    }
+
+    public static void ResetPlayScreen(){
+        Keyboard.ResetKeyboard();
+        score = 0;
+        Scoreboard.updateScore(score);
     }
 
     private static void SetUpWord(Difficulty pDifficulty){

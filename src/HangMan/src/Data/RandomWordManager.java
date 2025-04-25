@@ -19,7 +19,7 @@ public class RandomWordManager {
             List<String> wordList = new ArrayList<>();
             switch(pDifficulty){
                 case Easy -> {
-                    apiUrl = "https://loudly-organic-osprey.ngrok-free.app/Word?lang=de&number=100&min=3&max=5";
+                    apiUrl = "https://loudly-organic-osprey.ngrok-free.app/Word?lang=de&number=100&min=7&max=10";
                     wordList = SendRequest(apiUrl);
                 }
                 case Medium -> {
@@ -27,7 +27,7 @@ public class RandomWordManager {
                     wordList = SendRequest(apiUrl);
                 }
                 case Hard -> {
-                    apiUrl = "https://loudly-organic-osprey.ngrok-free.app/Word?lang=it&number=100&min=7&max=10";
+                    apiUrl = "https://loudly-organic-osprey.ngrok-free.app/Word?lang=it&number=100&min=3&max=5";
                     wordList = SendRequest(apiUrl);
                 }
             }
