@@ -52,25 +52,30 @@ public class ChooseDifficultySite {
         panel.add(text, gbc);
 
         JButton easy = new JButton("Easy");
-        easy.setBackground(Color.GREEN);
+        easy.setBackground(new Color(102, 205, 102));
         gbc.gridy = 1;
         easy.addActionListener(easyAction);
         easy.setFocusPainted(false);
+        easy.setFont(new Font("Arial", Font.BOLD, 14));
         panel.add(easy, gbc);
 
         JButton medium = new JButton("Medium");
-        medium.setBackground(Color.ORANGE);
+        medium.setBackground(new Color(244, 164, 96));
         gbc.gridy = 2;
         medium.addActionListener(mediumAction);
         medium.setFocusPainted(false);
+        medium.setFont(new Font("Arial", Font.BOLD, 14));
         panel.add(medium, gbc);
 
         JButton hard = new JButton("Hard");
-        hard.setBackground(Color.RED);
+        hard.setBackground(new Color(178, 34, 34));
         gbc.gridy = 3;
         hard.addActionListener(hardAction);
         hard.setFocusPainted(false);
+        hard.setFont(new Font("Arial", Font.BOLD, 14));
         panel.add(hard, gbc);
+
+
 
         difficultySite.add(panel);
 
