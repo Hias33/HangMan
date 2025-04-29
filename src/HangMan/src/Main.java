@@ -9,8 +9,9 @@ public class Main {
     private static void SetUpSites(){
         ChooseDifficultySite.SetUpDifficultySite();
         PlayScreen.SetUpPlayScreen();
-        WinnerScreen.SetUpWinnerScreen();
         Keyboard.SetUpKeyboard();
         Scoreboard.SetUpScoreBoard();
+        WinnerScreen.SetUpWinnerScreen();
+        GameOverScreen.SetUpGameOverScreen();
     }
 }

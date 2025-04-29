@@ -4,43 +4,42 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class WinnerScreen {
+public class GameOverScreen {
 
-    public static JPanel winnerScreenPanel = new JPanel();
+    public static JPanel gameOverScreenPanel = new JPanel();
 
-    public static void SetUpWinnerScreen() {
+    public static void SetUpGameOverScreen() {
         GridBagConstraints gbc = new GridBagConstraints();
 
-        winnerScreenPanel.setBackground(new Color(78, 67, 214));
-
-        winnerScreenPanel.setLayout(new GridBagLayout());
+        gameOverScreenPanel.setBackground(new Color(78, 67, 214));
+        gameOverScreenPanel.setLayout(new GridBagLayout());
 
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.insets = new Insets(10, 10, 10, 10);
 
-        JLabel victoryLabel = new JLabel("Victory!");
-        victoryLabel.setFont(new Font("Arial", Font.BOLD, 50));
-        victoryLabel.setForeground(new Color(255, 215, 0));
-        winnerScreenPanel.add(victoryLabel, gbc);
-
+        JLabel gameOverLabel = new JLabel("Game Over!");
+        gameOverLabel.setFont(new Font("Arial", Font.BOLD, 50));
+        gameOverLabel.setForeground(new Color(255, 69, 69));
+        gameOverScreenPanel.add(gameOverLabel, gbc);
 
         gbc.gridy = 1;
         gbc.insets = new Insets(20, 10, 10, 10);
 
+
         playAgainButton.setFont(new Font("Arial", Font.BOLD, 20));
-        playAgainButton.setBackground(new Color(255, 215, 0));
+        playAgainButton.setBackground(new Color(255, 69, 69));
         playAgainButton.setForeground(Color.BLACK);
         playAgainButton.addActionListener(playAgainAction);
-        winnerScreenPanel.add(playAgainButton, gbc);
+        gameOverScreenPanel.add(playAgainButton, gbc);
     }
 
-    public static void ActivateWinnerScreen() {
-        winnerScreenPanel.setVisible(true);
+    public static void ActivateGameOverScreen() {
+        gameOverScreenPanel.setVisible(true);
     }
 
-    public static void DeactivateWinnerScreen() {
-        winnerScreenPanel.setVisible(false);
+    public static void DeactivateGameOverScreen() {
+        gameOverScreenPanel.setVisible(false);
     }
 
     private static AbstractAction playAgainAction = new AbstractAction() {
@@ -48,8 +47,8 @@ public class WinnerScreen {
         public void actionPerformed(ActionEvent e) {
             PlayScreen.DeactivatePlayScreen();
             PlayScreen.ResetPlayScreen();
-            DeactivateWinnerScreen();
             ChooseDifficultySite.ActivateDifficultySite();
+            DeactivateGameOverScreen();
         }
     };
 

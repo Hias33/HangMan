@@ -59,7 +59,6 @@ public class Keyboard {
         getBack.addActionListener(backAction);
         getBack.setBorder(border);
         keyboard.add(getBack,gbc);
-
     }
 
     public static void ResetKeyboard(){
@@ -72,6 +71,14 @@ public class Keyboard {
                 }
             }
         }
+    }
+
+    public static void ActivateKeyboard(){
+        keyboard.setVisible(true);
+    }
+
+    public static void DeactivateKeyboard(){
+        keyboard.setVisible(false);
     }
     
     static AbstractAction backAction = new AbstractAction() {

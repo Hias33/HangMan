@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import javax.swing.text.*;
 
 
@@ -41,6 +42,10 @@ public class PlayScreen {
         gbc.gridy = 1;
         gbc.insets = new Insets(40,10,10,10);
         playScreenPanel.add(Keyboard.keyboard, gbc);
+        playScreenPanel.add(WinnerScreen.winnerScreenPanel, gbc);
+        playScreenPanel.add(GameOverScreen.gameOverScreenPanel, gbc);
+        WinnerScreen.DeactivateWinnerScreen();
+        GameOverScreen.DeactivateGameOverScreen();
 
         gbc.gridy = 2;
         gbc.insets = new Insets(10,10,10,10);
@@ -51,6 +56,7 @@ public class PlayScreen {
     }
 
     public static void ActivatePlayScreen(Difficulty pDifficulty) {
+        Keyboard.ActivateKeyboard();
         SetUpWord(pDifficulty);
         playScreen.setVisible(true);
     }
@@ -92,6 +98,11 @@ public class PlayScreen {
                     deadManLabel.repaint();
                     manPanel.revalidate();
                     manPanel.repaint();
+                    if(wrongGuesses==8){
+                        Keyboard.DeactivateKeyboard();
+                        GameOverScreen.ActivateGameOverScreen();
+                        disguisedWord = word.toCharArray();
+                    }
                 }
                 else{
                     score--;
@@ -99,7 +110,8 @@ public class PlayScreen {
                 }
             }
             if(!new String(disguisedWord).contains("_")){
-
+                Keyboard.DeactivateKeyboard();
+                WinnerScreen.ActivateWinnerScreen();
             }
         }
     }
@@ -112,7 +124,7 @@ public class PlayScreen {
 
     private static void SetUpWord(Difficulty pDifficulty){
         wordList = RandomWordManager.getRandomWord(pDifficulty);
-        String wordString = wordList.get(0);
+        String wordString = wordList.get(random.nextInt(0,99));
         word = wordString;
         disguisedWord = new char[wordString.length()];
         for (int i = 0; i < wordString.length(); i++)
@@ -124,6 +136,7 @@ public class PlayScreen {
     }
 
     private static int wrongGuesses=1;
+    private static Random random = new Random();
     private static JPanel manPanel = new JPanel();
     private static JFrame playScreen = new JFrame("Play Screen");
     private static JPanel playScreenPanel = new JPanel();
