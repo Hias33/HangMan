@@ -1,7 +1,6 @@
 package Data;
 //intern:
 import Models.Difficulty;
-import Models.Language;
 
 //extern:
 import java.io.BufferedReader;
@@ -32,17 +31,6 @@ public class RandomWordManager {
             return wordList;
         }
 
-        public static List<String> GetCustomDifficultyWord(List<Language> pLanguages, int pWordLength){
-            List<String> wordList = new ArrayList<>();
-            for(Language language : pLanguages){
-                apiUrl = "https://random-word-api.herokuapp.com/word?lang="+language.language+"&number="+language.probability+"&length="+pWordLength;
-                for(String word : SendRequest(apiUrl)){
-                    wordList.add(word);
-                }
-            }
-            return wordList;
-        };
-
         private static List<String> SendRequest(String pApiUrl){
             try {
                 URL url = new URL(pApiUrl);
@@ -63,13 +51,10 @@ public class RandomWordManager {
                     String rawResponse = inputLine.toString().trim();
                     rawResponse = rawResponse.substring(1,rawResponse.length() - 1);
 
-
-//                    String[] wordsArray = rawResponse.split(",");
-
-                    String cleanedInput = rawResponse.replace("\"words\":[", "")  // Entfernt den Präfix
-                            .replace("[", "")            // Entfernt die eckige Klammer links
-                            .replace("]", "")            // Entfernt die eckige Klammer rechts
-                            .replace("\"", "");          // Entfernt die Anführungszeichen
+                    String cleanedInput = rawResponse.replace("\"words\":[", "")
+                            .replace("[", "")
+                            .replace("]", "")
+                            .replace("\"", "");
 
 
                     String[] wordsArray = cleanedInput.split(",");

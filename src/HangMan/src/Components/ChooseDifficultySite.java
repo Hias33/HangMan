@@ -8,33 +8,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class ChooseDifficultySite {
-    static JFrame difficultySite = new JFrame("Difficulty Site");
-    static JPanel panel = new JPanel();
-
-    static AbstractAction easyAction = new AbstractAction() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            PlayScreen.ActivatePlayScreen(Difficulty.Easy);
-            difficultySite.setVisible(false);
-        }
-    };
-
-    static AbstractAction mediumAction = new AbstractAction() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            PlayScreen.ActivatePlayScreen(Difficulty.Medium);
-            difficultySite.setVisible(false);
-        }
-    };
-
-    static AbstractAction hardAction = new AbstractAction() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            PlayScreen.ActivatePlayScreen(Difficulty.Hard);
-            difficultySite.setVisible(false);
-        }
-    };
-
     public static void SetUpDifficultySite(){
         difficultySite.setSize(600, 400);
         difficultySite.setBackground(new Color(78, 67, 214));
@@ -75,11 +48,35 @@ public class ChooseDifficultySite {
         hard.setFont(new Font("Arial", Font.BOLD, 14));
         panel.add(hard, gbc);
 
-
-
         difficultySite.add(panel);
-
     }
+
+    private static JFrame difficultySite = new JFrame("Difficulty Site");
+    private static JPanel panel = new JPanel();
+
+    private static AbstractAction easyAction = new AbstractAction() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            PlayScreen.ActivatePlayScreen(Difficulty.Easy);
+            DeactivateDifficultySite();
+        }
+    };
+
+    private static AbstractAction mediumAction = new AbstractAction() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            PlayScreen.ActivatePlayScreen(Difficulty.Medium);
+            DeactivateDifficultySite();
+        }
+    };
+
+    private static AbstractAction hardAction = new AbstractAction() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            PlayScreen.ActivatePlayScreen(Difficulty.Hard);
+            DeactivateDifficultySite();
+        }
+    };
 
     public static void ActivateDifficultySite(){
         difficultySite.setVisible(true);
