@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class ChooseDifficultySite {
+<<<<<<< HEAD
     static JFrame difficultySite = new JFrame("Difficulty Site");
     static JPanel panel = new JPanel();
 
@@ -35,6 +36,8 @@ public class ChooseDifficultySite {
         }
     };
 
+=======
+>>>>>>> e8a43a1c5a378555eb39d6119c19ba5ea6a92714
     public static void SetUpDifficultySite(){
         difficultySite.setSize(600, 400);
         difficultySite.setBackground(new Color(78, 67, 214));
@@ -76,8 +79,34 @@ public class ChooseDifficultySite {
         panel.add(hard, gbc);
 
         difficultySite.add(panel);
-
     }
+
+    private static JFrame difficultySite = new JFrame("Difficulty Site");
+    private static JPanel panel = new JPanel();
+
+    private static AbstractAction easyAction = new AbstractAction() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            PlayScreen.ActivatePlayScreen(Difficulty.Easy);
+            DeactivateDifficultySite();
+        }
+    };
+
+    private static AbstractAction mediumAction = new AbstractAction() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            PlayScreen.ActivatePlayScreen(Difficulty.Medium);
+            DeactivateDifficultySite();
+        }
+    };
+
+    private static AbstractAction hardAction = new AbstractAction() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            PlayScreen.ActivatePlayScreen(Difficulty.Hard);
+            DeactivateDifficultySite();
+        }
+    };
 
     public static void ActivateDifficultySite(){
         difficultySite.setVisible(true);
