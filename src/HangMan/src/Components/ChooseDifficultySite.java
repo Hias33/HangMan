@@ -15,7 +15,7 @@ public class ChooseDifficultySite {
         @Override
         public void actionPerformed(ActionEvent e) {
             PlayScreen.ActivatePlayScreen(Difficulty.Easy);
-            difficultySite.setVisible(false);
+            DeactivateDifficultySite();
         }
     };
 
@@ -23,7 +23,7 @@ public class ChooseDifficultySite {
         @Override
         public void actionPerformed(ActionEvent e) {
             PlayScreen.ActivatePlayScreen(Difficulty.Medium);
-            difficultySite.setVisible(false);
+            DeactivateDifficultySite();
         }
     };
 
@@ -31,7 +31,7 @@ public class ChooseDifficultySite {
         @Override
         public void actionPerformed(ActionEvent e) {
             PlayScreen.ActivatePlayScreen(Difficulty.Hard);
-            difficultySite.setVisible(false);
+            DeactivateDifficultySite();
         }
     };
 
@@ -74,8 +74,6 @@ public class ChooseDifficultySite {
         hard.setFocusPainted(false);
         hard.setFont(new Font("Arial", Font.BOLD, 14));
         panel.add(hard, gbc);
-
-
 
         difficultySite.add(panel);
 

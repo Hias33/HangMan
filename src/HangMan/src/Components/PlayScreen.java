@@ -83,7 +83,7 @@ public class PlayScreen {
                         disguisedWord[i] = pInput.charAt(0);
                         correctLetters++;
                     }
-                }
+                }                                                                                           
                 score+=correctLetters;
                 Scoreboard.updateScore(score);
                 playField.setText(new String(disguisedWord).replaceAll(".(?!$)", "$0 "));
@@ -102,6 +102,7 @@ public class PlayScreen {
                         Keyboard.DeactivateKeyboard();
                         GameOverScreen.ActivateGameOverScreen();
                         disguisedWord = word.toCharArray();
+                        return;
                     }
                 }
                 else{
@@ -148,14 +149,5 @@ public class PlayScreen {
     private static ImageIcon deadMan;
     private static JLabel deadManLabel;
     private static int score = 0;
-
-    private static PlainDocument inputSetting = new PlainDocument() {
-        @Override
-        public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
-            if (getLength() < 1) {
-                super.insertString(offs, str, a);
-            }
-        }
-    };
 
 }
