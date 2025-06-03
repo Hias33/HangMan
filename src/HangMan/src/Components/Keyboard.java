@@ -6,6 +6,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class Keyboard {
+    private static String letters = "ABCDEFGHIJKLMNOPQRSTUWVXYZ";
+
     public static JPanel keyboard = new JPanel();
 
     public static void SetUpKeyboard(){
@@ -63,9 +65,9 @@ public class Keyboard {
         for (Component component : keyboard.getComponents()) {
             if (component instanceof JButton) {
                 JButton button = (JButton) component;
-                if (!button.getText().equals("Back!")) {
-                    button.setEnabled(true);
-                    button.setBackground(new Color(155, 12, 190));
+                if (!button.getText().equals("Back!")) { // Überspringe den "Back!"-Button
+                    button.setEnabled(true); // Aktiviert den Button
+                    button.setBackground(new Color(155, 12, 190)); // Setzt die ursprüngliche Farbe zurück
                 }
             }
         }
@@ -78,10 +80,8 @@ public class Keyboard {
     public static void DeactivateKeyboard(){
         keyboard.setVisible(false);
     }
-
-    private static String letters = "ABCDEFGHIJKLMNOPQRSTUWVXYZ";
-
-    private static AbstractAction backAction = new AbstractAction() {
+    
+    static AbstractAction backAction = new AbstractAction() {
         @Override
         public void actionPerformed(ActionEvent e) {
             PlayScreen.DeactivatePlayScreen();
