@@ -64,7 +64,7 @@ public class PlayScreen {
     public static void DeactivatePlayScreen() {
         playScreen.setVisible(false);
         wrongGuesses = 1;
-        imagePath = "C:\\Users\\Matthe2209\\IdeaProjects\\HangMan\\src\\HangMan\\resources\\images\\image_" + wrongGuesses + ".png";
+        imagePath = "HangMan/resources/images/image_" + wrongGuesses + ".png";
         ImageIcon updatedImage = new ImageIcon(imagePath);
         deadManLabel.setIcon(updatedImage);
         deadManLabel.revalidate();
@@ -91,7 +91,7 @@ public class PlayScreen {
             else{
                 if(score==0){
                     wrongGuesses++;
-                    imagePath = "C:\\Users\\Matthe2209\\IdeaProjects\\HangMan\\src\\HangMan\\resources\\images\\image_" + wrongGuesses + ".png";
+                    imagePath = "HangMan/resources/images/image_" + wrongGuesses + ".png";
                     ImageIcon updatedImage = new ImageIcon(imagePath);
                     deadManLabel.setIcon(updatedImage);
                     deadManLabel.revalidate();
@@ -145,7 +145,7 @@ public class PlayScreen {
     private static JLabel playField = new JLabel();
     private static char[] disguisedWord = new char[]{};
     private static String word;
-    private static String imagePath = "C:\\Users\\Matthe2209\\IdeaProjects\\HangMan\\src\\HangMan\\resources\\images\\image_" + wrongGuesses + ".png";
+    private static String imagePath = "HangMan/resources/images/image_" + wrongGuesses + ".png";
     private static ImageIcon deadMan;
     private static JLabel deadManLabel;
     private static int score = 0;
